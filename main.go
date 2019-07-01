@@ -115,16 +115,16 @@ func deleteInteraction(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(&interactions)
 }
 
-// func homePage(w http.ResponseWriter, r *http.Request) {
-// 	w.Header().Set("Content-Type", "application/json")
-// 	fmt.Fprintf(w, "HomePage!")
-// }
+func homePage(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	fmt.Fprintf(w, "HomePage!")
+}
 
 func handleRequests() {
 
 	myRouter := mux.NewRouter().StrictSlash(true)
 
-	// myRouter.HandleFunc("/", homePage)
+	myRouter.HandleFunc("/", homePage)
 	myRouter.HandleFunc("/interactions", allInteractions).Methods("GET")
 	myRouter.HandleFunc("/interactions", postInteraction).Methods("POST")
 	myRouter.HandleFunc("/interactions/{id}", deleteInteraction).Methods("DELETE", "OPTIONS")
