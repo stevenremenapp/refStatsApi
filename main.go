@@ -32,7 +32,7 @@ var dbPort = os.Getenv("DBPORT")
 var dbUser = os.Getenv("USER")
 var dbPassword = os.Getenv("PASSWORD")
 var dbName = os.Getenv("NAME")
-var serverPort = os.Getenv("SERVERPORT")
+var serverPort = os.Getenv("PORT")
 
 var (
 	host       = dbHost
@@ -132,8 +132,8 @@ func handleRequests() {
 		AllowedMethods: []string{"GET", "POST", "DELETE"},
 	})
 	handler := c.Handler(myRouter)
-	// http.ListenAndServe(fmt.Sprintf(":%s", serverport), handler)
-	http.ListenAndServe(":5000", handler)
+	http.ListenAndServe(fmt.Sprintf(":%s", serverport), handler)
+	// http.ListenAndServe(":5000", handler)
 }
 
 var db *gorm.DB
