@@ -132,7 +132,7 @@ func handleRequests() {
 		AllowedMethods: []string{"GET", "POST", "DELETE"},
 	})
 	handler := c.Handler(myRouter)
-	http.ListenAndServe(fmt.Sprintf(":%s", serverport), handler)
+	http.ListenAndServe(fmt.Sprintf(":%s", serverport) || ":5000", handler)
 }
 
 var db *gorm.DB
